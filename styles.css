@@ -1,0 +1,491 @@
+/* ========================================
+   ШРИФТЫ
+======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --grad-1: #667eea;
+    --grad-2: #764ba2;
+    --grad-3: #f093fb;
+    --grad-4: #4facfe;
+    --dark: #1a1a2e;
+    --muted: #6b7280;
+    --glass: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Calibri', 'Carlito', 'Gill Sans', 'Trebuchet MS', sans-serif;
+    background: #f5f7ff;
+    min-height: 100vh;
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* ========================================
+     АНИМИРОВАННЫЙ ФОН С BLOB-АМИ
+  ======================================== */
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    z-index: -1;
+    animation: float 20s ease-in-out infinite;
+  }
+  
+  body::before {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-3));
+    top: -150px;
+    left: -150px;
+  }
+  
+  body::after {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, var(--grad-4), var(--grad-2));
+    bottom: -200px;
+    right: -200px;
+    animation-delay: -10s;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(80px, -60px) scale(1.1); }
+    66%      { transform: translate(-60px, 40px) scale(0.95); }
+  }
+  
+  /* ========================================
+     НАВИГАЦИЯ — GLASS
+  ======================================== */
+  .navbar {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+  }
+  
+  .navbar-text {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  /* ========================================
+     HERO — ЗАГОЛОВОК
+  ======================================== */
+  .hero {
+    text-align: center;
+    padding: 70px 0 50px;
+  }
+  
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    background: linear-gradient(135deg, var(--grad-1) 0%, var(--grad-2) 50%, var(--grad-3) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    animation: fadeUp 0.8s ease;
+  }
+  
+  .hero .lead {
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 auto;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* ========================================
+     СТЕКЛЯННЫЕ КАРТОЧКИ
+  ======================================== */
+  .glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 40px;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+  
+  .glass-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .glass-card h3 .badge-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+  }
+  
+  /* ========================================
+     ПОЛЯ ВВОДА
+  ======================================== */
+  .form-label {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .custom-input {
+    border-radius: 14px !important;
+    border: 2px solid rgba(102, 126, 234, 0.15) !important;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: auto !important;
+  }
+  
+  .custom-input:focus {
+    border-color: var(--grad-1) !important;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15) !important;
+    background: #fff;
+    outline: none;
+  }
+  
+  .input-group-text {
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    width: 50px;
+    justify-content: center;
+  }
+  
+  .input-group-text:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+  
+  .input-group-text:last-child {
+    border-radius: 0 14px 14px 0;
+    background: rgba(102, 126, 234, 0.1);
+    color: var(--grad-2);
+    font-weight: 700;
+  }
+  
+  .input-group .form-control,
+  .input-group .form-select {
+    border-radius: 0 !important;
+  }
+  
+  /* ========================================
+     КНОПКА
+  ======================================== */
+  .btn-calculate {
+    border-radius: 14px;
+    padding: 16px 50px;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+    border: none;
+    color: #fff;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  }
+  
+  .btn-calculate::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, var(--grad-3), var(--grad-1));
+    transition: left 0.4s ease;
+  }
+  
+  .btn-calculate span,
+  .btn-calculate i {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .btn-calculate:hover::before { left: 0; }
+  
+  .btn-calculate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(118, 75, 162, 0.5);
+  }
+  
+  /* ========================================
+     РЕЗУЛЬТАТ — ГЛАВНЫЙ АКЦЕНТ
+  ======================================== */
+  .result-card {
+    background: linear-gradient(135deg, #1a1a2e 0%, #3d2c6b 50%, #667eea 100%);
+    color: #fff;
+    border-radius: 28px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.35);
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  
+  .result-card::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(240, 147, 251, 0.3), transparent 70%);
+    top: -100px; right: -100px;
+    border-radius: 50%;
+  }
+  
+  .result-card::after {
+    content: '';
+    position: absolute;
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.25), transparent 70%);
+    bottom: -80px; left: -80px;
+    border-radius: 50%;
+  }
+  
+  .result-card > * { position: relative; z-index: 1; }
+  
+  .result-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.75;
+    font-weight: 600;
+  }
+  
+  .result-total {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff, #f093fb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+    margin: 10px 0;
+  }
+  
+  .result-sub {
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  
+  .result-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 10px;
+  }
+  
+  .result-chip {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+  }
+  
+  /* ========================================
+     ЗАГОЛОВОК СЕКЦИИ
+  ======================================== */
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    text-align: center;
+    margin: 70px 0 40px;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--grad-1), var(--grad-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* ========================================
+     КАРТОЧКИ РАСХОДОВ
+  ======================================== */
+  .expense-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+  
+  .expense-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--card-c1), var(--card-c2));
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: -1;
+  }
+  
+  .expense-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+  }
+  
+  .expense-card:hover::before { opacity: 0.05; }
+  
+  .expense-card .icon-wrapper {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 18px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--card-c1), var(--card-c2));
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s;
+  }
+  
+  .expense-card:hover .icon-wrapper {
+    transform: rotate(-8deg) scale(1.1);
+  }
+  
+  .expense-card h5 {
+    color: var(--dark);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  
+  .expense-card .percent {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--card-c1), var(--card-c2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  /* Цвета для каждой статьи */
+  .bg-edu  { --card-c1: #667eea; --card-c2: #764ba2; }
+  .bg-med  { --card-c1: #f093fb; --card-c2: #f5576c; }
+  .bg-soc  { --card-c1: #4facfe; --card-c2: #00f2fe; }
+  .bg-jkh  { --card-c1: #43e97b; --card-c2: #38f9d7; }
+  .bg-cult { --card-c1: #fa709a; --card-c2: #fee140; }
+  .bg-sec  { --card-c1: #30cfd0; --card-c2: #330867; }
+  .bg-gov  { --card-c1: #a8edea; --card-c2: #fed6e3; }
+  
+  /* Круговой SVG прогресс */
+  .circle-progress {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 15px;
+    position: relative;
+  }
+  
+  .circle-progress svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+  }
+  
+  .circle-progress circle {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+  }
+  
+  .circle-progress .bg-circle {
+    stroke: rgba(0, 0, 0, 0.06);
+  }
+  
+  .circle-progress .fg-circle {
+    stroke: url(#grad);
+    stroke-dasharray: 251.2;
+    stroke-dashoffset: 251.2;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* ========================================
+     ФУТЕР
+  ======================================== */
+  .footer {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    color: var(--muted);
+    padding: 30px 0;
+    margin-top: 80px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  /* ========================================
+     АДАПТИВНОСТЬ
+  ======================================== */
+  @media (max-width: 768px) {
+    .glass-card { padding: 25px; }
+    .result-card { padding: 35px 25px; }
+    .result-divider { display: none; }
+    .btn-calculate { width: 100%; padding: 14px; }
+    .hero { padding: 40px 0 30px; }
+  }
